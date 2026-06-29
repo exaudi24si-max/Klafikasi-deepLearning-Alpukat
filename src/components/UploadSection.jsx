@@ -13,7 +13,7 @@ const UploadSection = () => {
   const fileInputRef = useRef(null);
 
   const handleFile = useCallback((file) => {
-    if (!file) return;
+    if (!file) return;  
 
     const validTypes = ["image/jpeg", "image/png", "image/jpg", "image/webp"];
     if (!validTypes.includes(file.type)) {
@@ -52,8 +52,6 @@ const UploadSection = () => {
 
   const handleDragLeave = () => setIsDragging(false);
 
-  const handleClick = () => fileInputRef.current?.click();
-
   const handleInputChange = (e) => {
     const file = e.target.files[0];
     handleFile(file);
@@ -67,7 +65,6 @@ const UploadSection = () => {
 
     try {
       const formData = new FormData();
-      formData.append("file", selectedFile);
       formData.append("image", selectedFile);
 
       const response = await fetch(API_URL, {
